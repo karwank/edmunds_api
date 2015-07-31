@@ -5,7 +5,7 @@ module Edmunds
     # http://developer.edmunds.com/api-documentation/vehicle/spec_style/v2/01_by_mmy/api-description.html
     def styles make, model, year, params = {}
       @parameters = [:state, :category, :submodel, :view]
-      call_api "/#{make}/#{model}/#{year}/styles?", params
+      call_api "/#{URI.escape(make)}/#{URI.escape(model)}/#{URI.escape(year)}/styles?", params
     end
 
     # http://developer.edmunds.com/api-documentation/vehicle/spec_style/v2/03_count_by_mmy/api-description.html
@@ -16,11 +16,11 @@ module Edmunds
       @parameters = [:state]
       url = ""
       unless make.blank?
-        url += "/#{make}"
+        url += "/#{URI.escape(make)}"
         unless model.blank?
-          url += "/#{model}"
+          url += "/#{URI.escape(model)}"
           unless year.blank?
-            url += "/#{year}"
+            url += "/#{URI.escape(year)}"
           end
         end
       end
@@ -28,9 +28,9 @@ module Edmunds
     end
 
     # http://developer.edmunds.com/api-documentation/vehicle/spec_style/v2/02_by_id/api-description.html
-    def style style_id
+    def style style_id, params = {}
       @parameters = [:view]
-      call_api "/styles/#{style_id}?"
+      call_api "/styles/#{style_id}?", params
     end
 
     # http://developer.edmunds.com/api-documentation/vehicle/spec_style/v2/03_chrome/api-description.html

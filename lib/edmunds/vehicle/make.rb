@@ -17,7 +17,7 @@ module Edmunds
     # http://developer.edmunds.com/api-documentation/vehicle/spec_make/v2/02_make_details/api-description.html
     def make make, params = {}
       @parameters = [:state, :year, :view]
-      call_api "/#{make}?", params
+      call_api "/#{URI.escape(make)}?", params
     end
 
   end

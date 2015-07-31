@@ -26,7 +26,6 @@ module Edmunds
 
     def call_api url, params = {}
       url = @api_base_url + @endpoint + url + parse_params(params) + @format
-      p url
       resp = RestClient.get(url)
       Crack::JSON.parse(resp)
     end
@@ -35,7 +34,7 @@ module Edmunds
       parameters = ""
       @parameters.each do |parameter|
         unless params[parameter].blank?
-          parameters += "#{parameter.to_s}=#{URI.escape(@params[parameter].to_s)}&"
+          parameters += "#{parameter.to_s}=#{URI.escape(params[parameter].to_s)}&"
         end
       end
       parameters
