@@ -9,7 +9,7 @@ module Edmunds
 
     def initialize
       if set_key
-        @api_base_url = "http://api.edmunds.com"
+        @api_base_url = "https://api.edmunds.com"
         @image_base_url = "http://media.ed.edmunds-media.com"
         @format = "fmt=json&api_key=#{@api_key}"
       else

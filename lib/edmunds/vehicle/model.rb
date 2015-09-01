@@ -17,7 +17,7 @@ module Edmunds
     # http://developer.edmunds.com/api-documentation/vehicle/spec_model/v2/02_model_details/api-description.html
     def model make, model, params = {}
       @parameters = [:state, :year, :view, :submodel, :category]
-      call_api "/#{URI.escape(make)}/#{URI.escape(model)}/count?", params
+      call_api "/#{URI.escape(make)}/#{URI.escape(model)}?", params
     end
 
   end

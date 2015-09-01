@@ -35,6 +35,12 @@ module Edmunds
       call_api "/styles/#{style_id}/photos?", params
     end
 
+    def old_photos_by_style style_id, params = {}
+      @parameters = []
+      @endpoint = "/v1/api"
+      call_api "/vehiclephoto/service/findphotosbystyleid?styleId=#{style_id}&", params
+    end
+
   end
   
 end
