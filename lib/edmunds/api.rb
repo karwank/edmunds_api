@@ -1,6 +1,4 @@
 require 'rest_client'
-require 'crack'
-require 'crack/json'
 
 module Edmunds
   class Api
@@ -27,7 +25,7 @@ module Edmunds
     def call_api url, params = {}
       url = @api_base_url + @endpoint + url + parse_params(params) + @format
       resp = RestClient.get(url)
-      Crack::JSON.parse(resp)
+      JSON.parse(resp)
     end
 
     def parse_params params
